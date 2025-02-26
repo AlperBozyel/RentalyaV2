@@ -3,6 +3,7 @@ import { Form, Button, Container, Row, Col, Card, Alert } from 'react-bootstrap'
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import './Login.css';
+import { Link } from 'react-router-dom';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -112,9 +113,14 @@ const Login = () => {
                     </Button>
 
                     <div className="text-center mt-3">
-                      <a href="/forgot-password" className="text-decoration-none">
-                        Şifremi Unuttum
-                      </a>
+                      <div className="d-flex justify-content-between">
+                        <Link to="/forgot-password" className="text-decoration-none">
+                          Şifremi Unuttum
+                        </Link>
+                        <Link to="/signup" className="text-decoration-none">
+                          Yeniysen kayıt ol!
+                        </Link>
+                      </div>
                     </div>
                   </Form>
                 )}

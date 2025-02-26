@@ -6,6 +6,7 @@ using System.Text;
 using RentalyaAPI.Models;
 using RentalyaAPI.Configurations;
 using RentalyaAPI.Data;
+using RentalyaAPI.Services;
 
 namespace RentalyaAPI
 {
@@ -29,10 +30,13 @@ namespace RentalyaAPI
                     // ... mevcut JWT ayarları ...
                 });
 
+            // Auth servisini ekleyelim
+            builder.Services.AddScoped<IAuthService, AuthService>();
+
             // CORS Configuration
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("AllowReactApp",
+                options.AddPolicy("ReactPolicy",
                     builder => builder
                         .WithOrigins("http://localhost:3000")
                         .AllowAnyMethod()
@@ -52,7 +56,7 @@ namespace RentalyaAPI
             }
 
             app.UseHttpsRedirection();
-            app.UseCors("AllowReactApp");
+            app.UseCors("ReactPolicy");
             app.UseAuthentication();
             app.UseAuthorization();
             app.MapControllers();

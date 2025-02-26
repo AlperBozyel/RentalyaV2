@@ -10,6 +10,7 @@ using RentalyaAPI.Configurations;
 using RentalyaAPI.Data;
 using MongoDB.Driver;
 using BC = BCrypt.Net.BCrypt;
+using RentalyaAPI.Services;
 
 namespace RentalyaAPI.Controllers
 {
@@ -19,13 +20,16 @@ namespace RentalyaAPI.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly JwtConfig _jwtConfig;
+        private readonly IAuthService _authService;
 
         public AuthController(
             ApplicationDbContext context,
-            IOptions<JwtConfig> jwtConfig)
+            IOptions<JwtConfig> jwtConfig,
+            IAuthService authService)
         {
             _context = context;
             _jwtConfig = jwtConfig.Value;
+            _authService = authService;
         }
 
         [HttpPost("login")]
@@ -85,51 +89,21 @@ namespace RentalyaAPI.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterDto model)
+        public async Task<IActionResult> Register([FromBody] RegisterModel model)
         {
             try
             {
-                var userExists = await _context.Users
-                    .Find(u => u.Email == model.Email)
-                    .AnyAsync();
-
-                if (userExists)
+                if (!ModelState.IsValid)
                 {
-                    return BadRequest(new AuthResponseDto
-                    {
-                        IsSuccess = false,
-                        Message = "Bu email adresi zaten kayıtlı"
-                    });
+                    return BadRequest(ModelState);
                 }
 
-                var user = new ApplicationUser
-                {
-                    Email = model.Email,
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    PasswordHash = BC.HashPassword(model.Password),
-                    IsAdmin = model.IsAdmin
-                };
-
-                await _context.Users.InsertOneAsync(user);
-
-                var token = GenerateJwtToken(user);
-
-                return Ok(new AuthResponseDto
-                {
-                    IsSuccess = true,
-                    Token = token,
-                    Message = "Kayıt başarılı",
-                    Expiration = DateTime.UtcNow.AddMinutes(_jwtConfig.ExpiryInMinutes)
-                });
+                var result = await _authService.RegisterUser(model);
+                return Ok(new { message = "Kullanıcı başarıyla kaydedildi" });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new AuthResponseDto
-                {
-                    IsSuccess = false,
-                    Message = "Bir hata oluştu: " + ex.Message
-                });
+                return BadRequest(new { message = ex.Message });
             }
         }
 
