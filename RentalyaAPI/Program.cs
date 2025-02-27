@@ -1,12 +1,11 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using RentalyaAPI.Models;
 using RentalyaAPI.Configurations;
 using RentalyaAPI.Data;
 using RentalyaAPI.Services;
+using RentalyaAPI.Repositories;
 
 namespace RentalyaAPI
 {
@@ -42,6 +41,9 @@ namespace RentalyaAPI
                         .AllowAnyMethod()
                         .AllowAnyHeader());
             });
+
+            // Generic Repository'yi DI container'a kaydetme
+            builder.Services.AddScoped(typeof(IMongoRepository<>), typeof(MongoRepository<>));
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();

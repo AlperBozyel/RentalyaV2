@@ -1,20 +1,28 @@
-using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using RentalyaAPI.Models.Base;
+using RentalyaAPI.Attributes;
 
 namespace RentalyaAPI.Models
 {
-    public class ApplicationUser
+    [BsonCollection("users")]
+    public class ApplicationUser : BaseEntity
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; } = string.Empty;
-        
+        [BsonElement("email")]
         public string Email { get; set; } = string.Empty;
+
+        [BsonElement("passwordHash")]
         public string PasswordHash { get; set; } = string.Empty;
+
+        [BsonElement("firstName")]
         public string FirstName { get; set; } = string.Empty;
+
+        [BsonElement("lastName")]
         public string LastName { get; set; } = string.Empty;
+
+        [BsonElement("isAdmin")]
         public bool IsAdmin { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+        [BsonElement("roles")]
         public List<string> Roles { get; set; } = new();
     }
 }

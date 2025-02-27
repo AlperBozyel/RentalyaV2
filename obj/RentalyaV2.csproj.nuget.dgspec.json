@@ -1,27 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\RYZEN\\Desktop\\CursorAI\\RentalyaV2\\RentalyaV2.csproj": {}
+    "C:\\Users\\alper.bozyel\\source\\repos\\RentalyaV2\\RentalyaV2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\RYZEN\\Desktop\\CursorAI\\RentalyaV2\\RentalyaV2.csproj": {
+    "C:\\Users\\alper.bozyel\\source\\repos\\RentalyaV2\\RentalyaV2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\RYZEN\\Desktop\\CursorAI\\RentalyaV2\\RentalyaV2.csproj",
+        "projectUniqueName": "C:\\Users\\alper.bozyel\\source\\repos\\RentalyaV2\\RentalyaV2.csproj",
         "projectName": "RentalyaV2",
-        "projectPath": "C:\\Users\\RYZEN\\Desktop\\CursorAI\\RentalyaV2\\RentalyaV2.csproj",
-        "packagesPath": "C:\\Users\\RYZEN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\RYZEN\\Desktop\\CursorAI\\RentalyaV2\\obj\\",
+        "projectPath": "C:\\Users\\alper.bozyel\\source\\repos\\RentalyaV2\\RentalyaV2.csproj",
+        "packagesPath": "C:\\Users\\alper.bozyel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\alper.bozyel\\source\\repos\\RentalyaV2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\RYZEN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\alper.bozyel\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\DevelopPackage": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\nugetcorelocal": {},
+          "http://nuget.dev.paximum.com/v3/index.json": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -45,6 +48,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AWSSDK.SecurityToken": {
+              "target": "Package",
+              "version": "[3.7.300.49, )"
+            },
             "BCrypt.Net-Next": {
               "target": "Package",
               "version": "[4.0.3, )"

@@ -1,0 +1,9 @@
+C:\Users\alper.bozyel\source\repos\RentalyaV2\obj\Debug\net8.0\RentalyaV2.csproj.AssemblyReference.cache
+C:\Users\alper.bozyel\source\repos\RentalyaV2\obj\Debug\net8.0\MvcTestingAppManifest.json
+C:\Users\alper.bozyel\source\repos\RentalyaV2\obj\Debug\net8.0\RentalyaV2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alper.bozyel\source\repos\RentalyaV2\obj\Debug\net8.0\RentalyaV2.AssemblyInfoInputs.cache
+C:\Users\alper.bozyel\source\repos\RentalyaV2\obj\Debug\net8.0\RentalyaV2.AssemblyInfo.cs
+C:\Users\alper.bozyel\source\repos\RentalyaV2\obj\Debug\net8.0\RentalyaV2.csproj.CoreCompileInputs.cache
+C:\Users\alper.bozyel\source\repos\RentalyaV2\obj\Debug\net8.0\RentalyaV2.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\alper.bozyel\source\repos\RentalyaV2\obj\Debug\net8.0\RentalyaV2.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\alper.bozyel\source\repos\RentalyaV2\obj\Debug\net8.0\RentalyaV2.sourcelink.json
